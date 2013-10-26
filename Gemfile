@@ -14,8 +14,9 @@ group :production do
   gem 'thin'
 end
 
-group :develop, :test do
+group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
 end
 
 group :doc do
