@@ -7,6 +7,12 @@ describe VirtualDomain do
   end
 
   describe 'name' do
+    context 'an empty name' do
+      it 'be rejected' do
+        VirtualDomain.new.save.should_not be
+      end
+    end
+
     context 'a valid domain' do
       before(:each) do
         @domain = FactoryGirl.build(:example_com)
@@ -24,17 +30,12 @@ describe VirtualDomain do
       end
 
       it 'be rejected' do
-        @duplicate.save.should not_be
+        @duplicate.save.should_not be
       end
     end
 
     context 'a malformed domain' do
-      before(:each) do
-        @malformed = FactoryGirl.build(:malformed_com)
-      end
-      it 'be rejected' do
-        @malformed.save.should not_be
-      end
+      it 'be rejected'
     end
   end
 end
