@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe VirtualAlias do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_uniqueness_of(:destination).scoped_to(:source) }
+  it { should validate_presence_of(:destination) }
+  it { should validate_presence_of(:source) }
 end
