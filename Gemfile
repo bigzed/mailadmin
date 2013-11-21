@@ -13,7 +13,7 @@ gem 'highline'
 
 group :production do
   gem 'thin'
-  gem 'mysql'
+  gem 'mysql2'
 end
 
 group :development, :test do
