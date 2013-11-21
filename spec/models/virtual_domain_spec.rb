@@ -4,6 +4,7 @@ describe VirtualDomain do
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name) }
   it { should have_many(:virtual_user) }
+  it { should have_many(:virtual_alias) }
 
   describe '.name' do
     it 'validates format of domain'
@@ -11,6 +12,7 @@ describe VirtualDomain do
 
   describe 'relationship' do
     before { FactoryGirl.create(:steved_at_obstkiste_org) }
+    after { VirtualUser.delete_all}
 
     describe 'to virtual_user' do
       context 'when domain is destroyed' do
