@@ -1,5 +1,3 @@
-require 'highline/import'
-
 def encrypt(password)
   `doveadm pw -s ssha -p #{password}`
 end
