@@ -1,15 +1,13 @@
-require 'highline/import'
-
 namespace :virtual_alias do
   desc "Create new virtual alias"
-  task :create, [:source, :destination] => [:environment] do |t,args|
-    source = args[:source]
-    destination = args[:destination]
-    source ||= ask('What is the new alias source?')
-    destination ||= ask('What is the new alias destination?')
+  task create: [:environment] do
+    src_name, src_domain_name = ask('What is the new source for the alias?'), lambda { |str| str.split(/@\s*/) }
+    destination = ask('What is the new destination for the alias?')
 
-    ('Alias already exists.') if VirtualAlias.exists?(source: source, destination: destination)
-    VirtualAlias.create(source: source, destination: destination)
+    domain = VirtualDomain.where(name: src_domain_name).first
+    domain ||= VirtualDomain.create(name: src_domain_name)
+
+    VirtualAlias.create(name: src_name, virtual_domain: domain, destination: destination)
   end
 
   desc "List all virtual aliases"
