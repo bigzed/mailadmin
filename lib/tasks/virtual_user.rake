@@ -32,7 +32,7 @@ namespace :virtual_user do
 
     printf("%#{max_source}s | %#{max_dest}s\n", "Id", "Email")
     puts ("-" * (max_source + max_dest + 4))
-    user.each do |a|
+    each.user do |a|
       printf("%#{max_source+1}d | %#{max_dest}s\n", a.id, "#{a.name}@#{a.virtual_domain.name}")
     end
   end

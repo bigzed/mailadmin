@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026123359) do
+ActiveRecord::Schema.define(version: 20131126214439) do
 
   create_table "virtual_aliases", force: true do |t|
     t.string   "name"
     t.integer  "virtual_domain_id"
-    t.integer  "virtual_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "destination"
+    t.string   "source"
   end
 
   create_table "virtual_domains", force: true do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20131026123359) do
     t.integer  "virtual_domain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end
