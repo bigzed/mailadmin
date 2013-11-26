@@ -1,7 +1,7 @@
 namespace :virtual_alias do
   desc "Create new virtual alias"
   task create: [:environment] do
-    src_name, src_domain_name = ask('What is the new source for the alias?'), lambda { |str| str.split(/@\s*/) }
+    src_name, src_domain_name = ask('What is the new source for the alias?', lambda { |str| str.split(/@\s*/) })
     destination = ask('What is the new destination for the alias?')
 
     domain = VirtualDomain.where(name: src_domain_name).first
